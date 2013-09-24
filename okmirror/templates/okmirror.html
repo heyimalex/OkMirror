@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>OkMirror</title>
+		<meta name="description" content="Find out your okcupid attractiveness rating">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<link href='http://fonts.googleapis.com/css?family=Lily+Script+One' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="{{url_for('static', filename='main.css')}}">
+		<script type="text/javascript">
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-29634915-1']);
+		  _gaq.push(['_setDomainName', 'heyimalex.com']);
+		  _gaq.push(['_trackPageview']);
+
+		  (function() {
+		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+		</script>
+	</head>
+	<body>
+		<div id='main'>
+			<h1>OkMirror</h1>
+			<p>
+				OkMirror lets you see okcupid attractiveness ratings. All you have to do is enter the <i><b>case sensitive</b></i> username you want to look up and click the button below. Currently works on <i>most</i> usernames, and I'll be working to fix the ones that don't. Questions and comments go to <a href='mailto:alex@heyimalex.com'>alex@heyimalex.com</a>.
+			</p>
+			<input id='username' type='text' name='username' autofocus>
+			<input type='submit' value='check' class='button' id='check'>
+			<div id='response'>
+			</div>
+		<div id='foot'><a href='http://heyimalex.com'>Alex Guerra // HeyImAlex</a></div>
+		</div>
+
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+		<script type="text/javascript">
+
+		$(document).ready(function() {
+
+			get_val = function(){
+				$("#check").unbind("click", get_val);
+				$('#response').html("<img id='loading' src='{{url_for('static', filename='loading.gif')}}'>");
+				username = $('#username').val();
+				$.get('{{url_for('check')}}'+username,function(data) {
+					$('#response').html(data);	
+					$("#check").bind("click", get_val);
+				});
+			};
+
+			$("#check").bind("click", get_val);
+
+			$("#username").keyup(function(event){
+			    if(event.keyCode == 13){
+			        $("#check").click();
+			    }
+			});
+
+			});
+		</script>
+	</body>
+</html>

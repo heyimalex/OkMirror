@@ -1,0 +1,204 @@
+
+@import "compass/css3/transition";
+
+$main-color: #433c2f;
+
+body{
+	background-image: url('bg.png');
+	color:#433c2f;
+	font-family:sans-serif;
+	font-size:14px;
+	overflow-y:scroll;
+	overflow-x:hidden;
+}
+
+::-moz-selection{ background:$main-color; color:#fff; text-shadow:none; }
+::selection{ background:$main-color; color:#fff; text-shadow:none; }
+
+#main{
+	max-width:680px;
+	padding:40px 60px 60px 60px;
+	margin:0px auto 0px auto;
+}
+
+#foot{
+	width:90%;
+	padding:5px 5% 5px 5%;
+	background-color:#433c2f;
+	color:#fff;
+	border-bottom:3px solid #222;
+	margin-top:50px;
+	font-size:12px;
+	a{
+		color:inherit;
+	}
+}
+
+h1{
+	font-size:80px;
+	padding:0px 0px 5px 0px;
+	margin-bottom:0px;
+	font-weight:normal;
+	font-family: 'Lily Script One', cursive;
+	text-align:center;
+	color:#fff;
+	/*text-shadow: #433c2f 0px 1px 3px;*/
+}
+
+a{
+	color:lighten($main-color, 25%);
+	text-decoration:none;
+	&:visited{
+		color: #777;
+	}
+	&:hover{
+		text-decoration: underline;
+	}
+}
+
+p{
+	line-height:1.75em;
+	width: 80%;
+	margin: 10px auto 10px auto;
+	text-align:center;
+}
+
+#username{
+	height:30px;
+	width:100%;
+	font-size:30px;
+	text-align:center;
+	margin-top:25px;
+	padding:10px 0px 10px 0px;
+	color:#333;
+	outline:none;
+	border: none;
+	/*box-shadow:inset 0 3px 20px #000;*/
+}
+
+.button{
+	width:60%;
+	margin:0px auto 30px auto;
+	padding:3px 0px 3px 0px;
+	display:block;
+	color:#fff;
+	background-color:#433c2f;
+	font-size:20px;
+	text-align:center;
+
+	cursor:pointer;
+	font-family: 'Lily Script One', cursive;
+	border: none;
+	
+	-webkit-transition: .2s;
+	@include transition-duration(.2);
+	&:hover {
+		background-color: lighten($main-color, 10%);
+	}
+	&:active {
+		background-color: darken($main-color, 5%);
+		cursor:pointer;
+	}
+	&:focus{
+		outline-color:#444;
+	}
+}
+
+/* RESPONSE */
+
+.error{
+	display:block;
+	text-align: center;
+	color:$main-color;
+	font-size: 24px;
+	font-weight:bold;
+	text-shadow: #111 0px 1px 3px;
+}
+
+#un{
+	text-align:center;
+	font-size:64px;
+	margin-bottom:10px;
+	text-shadow: #111 0px 1px 3px;
+}
+
+#details{
+	text-align:center;
+}
+
+.essayTitle{
+	color:$main-color;
+	font-size: 24px;
+	font-weight:bold;
+	text-shadow: #111 0px 1px 3px;
+	display:block;
+	padding-top:25px;
+}
+
+img{
+	display:block;
+	margin:0px auto 0px auto;
+	max-width:100%;
+}
+
+.imgContainer{
+	background-color:#111;
+	padding:20px 5% 20px 5%;
+	width:90%;
+	margin-top:10px;
+	margin-bottom:10px;
+}
+
+li{
+	margin-bottom:5px;
+}
+
+table{
+	width:100%;
+}
+
+td{
+	border:1px solid #222;
+	padding:3px;
+	margin:0px;
+}
+
+.message{
+	text-align:center;
+}
+
+#response{
+	font-size:30px;
+	margin:10px auto 0px auto;
+	font-weight:normal;
+	font-family: 'Lily Script One', cursive;
+	text-align:center;
+	color:#fff;
+	width:90%;
+}
+
+@media screen and (max-width: 480px) {
+	h1{
+		font-size:36px;
+	}
+
+	#response{
+	font-size:20px;
+	}
+
+	#un{
+		font-size:36px;
+	}
+
+	#main{
+		padding:10px 2.5% 25px 2.5%;
+	}
+
+	#antisocial{
+        display:none;
+	}
+
+	.button{
+		font-size:16px;
+	}
+}

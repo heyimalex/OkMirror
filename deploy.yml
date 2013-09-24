@@ -1,0 +1,8 @@
+---
+- hosts: heyimsmall
+  gather_facts: no
+  sudo: yes
+  tasks:
+    - include: devops/deploy/flask_app.yml
+      vars:
+        app_name: okmirror
